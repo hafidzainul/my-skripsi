@@ -60,7 +60,7 @@ public class Recoverer {
         // write copy image
         try {
             // call function write image
-            imageProcessor[0].WriteImage("D:\\Skripsi\\Material\\Hasil.png");
+            imageProcessor[0].WriteImage("D:\\Skripsi\\Material\\HasilSSS.png");
         } catch (IOException e) {
             // print the error message
             System.out.println("Error = " +e);

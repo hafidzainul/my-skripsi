@@ -9,6 +9,7 @@ import imageprocessor.Recoverer;
 import java.io.IOException;
 import java.util.Scanner;
 import securescheme.SecureScheme;
+import chineseremaindertheorem.CRTScheme;
 
 /**
  *
@@ -25,6 +26,9 @@ public class TryShamirSecretSharing {
         int primeNumber = 256;
         Scanner si = new Scanner(System.in);
         
+        /*
+        *   Shamir Secret Sharing Scheme
+        *
         System.out.println("Obscuring Host Image");
         
         ShamirSecretSharingScheme ssss = new ShamirSecretSharingScheme();
@@ -39,7 +43,7 @@ public class TryShamirSecretSharing {
         for(int i = 0; i < xvalues.length; i++) {
             xvalues[i] = (i+1);
         }
-        ssss.DispartImage(xvalues);
+        ssss.dispartImage(xvalues);
         
         SecureScheme ss = new SecureScheme();
         ss.SecureScheme();
@@ -53,5 +57,29 @@ public class TryShamirSecretSharing {
             filePath[i] = "D:\\Skripsi\\Material\\SSSShares("+(xvalues[i])+").png";
         }
         recover.MergeImage(filePath, xvalues);
+        */
+        
+        /*
+        *   Chinese Remainder Theorem Scheme
+        */
+        System.out.println("Obscuring Host Image");
+        CRTScheme crts = new CRTScheme();
+        crts.primeNumber = primeNumber;
+        
+        System.out.print("Input the n shares = ");
+        crts.shares = si.nextInt();
+        
+        System.out.print("Input the threshold = ");
+        crts.threshold = si.nextInt();
+        
+        xvalues = new int[crts.shares];        
+        for(int i = 0; i < xvalues.length; i++) {
+            xvalues[i] = (i+60);
+        }
+        crts.dispartImage(xvalues);
+        
+        System.out.println("Retrieve host image");
+        
+        crts.recoverImage(xvalues);
     }
 }
